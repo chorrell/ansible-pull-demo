@@ -1,0 +1,9 @@
+---
+# Base configuration tasks for macOS
+- name: Ensure zsh is the default shell
+  user:
+    name: "{{ ansible_env.USER }}"
+    shell: /bin/zsh
+  become: true
+  tags: shell
+

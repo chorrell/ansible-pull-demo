@@ -1,1 +1,2 @@
-marvin.local
+[local]
+localhost ansible_connection=local
