@@ -20,6 +20,5 @@ galaxy_info:
     - management
 
 dependencies: []
-
 collections:
   - community.general
