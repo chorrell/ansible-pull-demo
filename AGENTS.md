@@ -9,6 +9,7 @@ Manages system settings and Homebrew packages.
   ansible-galaxy collection install -r collections/requirements.yml`
 • Syntax check: `ansible-playbook local.yml --syntax-check`
 • Test run (dry-run): `ansible-playbook local.yml --check`
+• YAML formatting check: `yamllint -c .yamllint .`
 • Run with ansible-pull: `ansible-pull -U <repo-url> local.yml`
 
 **DO NOT** run `ansible-playbook local.yml` directly - this modifies your
@@ -82,6 +83,7 @@ CI/CD runs syntax check and check mode on every PR.
 
 ## Evidence Required for PRs
 
+• YAML formatting passes (`yamllint -c .yamllint .`)
 • Syntax check passes (`ansible-playbook local.yml --syntax-check`)
 • Check mode succeeds (`ansible-playbook local.yml --check`)
 • ansible-lint passes (all Ansible code must pass linting)
