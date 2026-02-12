@@ -7,7 +7,7 @@ Using `ansible-pull` to configure macOS. Unlike the typical Ansible setup where 
 You'll need macOS with Ansible and git installed. Install Ansible with:
 
 ```bash
-pip3 install ansible
+pip3 install -r requirements.txt
 ```
 
 ## Usage

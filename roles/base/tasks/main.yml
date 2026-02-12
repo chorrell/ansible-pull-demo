@@ -1,8 +1,16 @@
 ---
 # Base configuration tasks for macOS
+- name: Gather minimal facts
+  setup:
+    gather_subset:
+      - '!all'
+      - '!min'
+      - env
+  tags: shell
+
 - name: Ensure zsh is the default shell
   user:
-    name: "{{ ansible_env.USER }}"
+    name: "{{ ansible_facts['env']['USER'] }}"
     shell: /bin/zsh
   become: true
   tags: shell
