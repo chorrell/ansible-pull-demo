@@ -1,0 +1,38 @@
+---
+# Homebrew package management tasks
+- name: Ensure Homebrew is installed
+  stat:
+    path: "{{ homebrew_binary_path }}"
+  register: homebrew_check
+  tags: homebrew
+
+- name: Display Homebrew status
+  debug:
+    msg: "Homebrew is {{ 'installed' if homebrew_check.stat.exists else 'not installed' }}"
+  tags: homebrew
+
+- name: Fail if Homebrew is not installed
+  fail:
+    msg: |
+      Homebrew is not installed. Please install it first:
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when: not homebrew_check.stat.exists and homebrew_required
+  tags: homebrew
+
+- name: Install Homebrew packages
+  community.general.homebrew:
+    name: "{{ homebrew_packages }}"
+    state: present
+  when: 
+    - homebrew_check.stat.exists
+    - homebrew_packages | length > 0
+  tags: homebrew
+
+- name: Install Homebrew cask applications
+  community.general.homebrew_cask:
+    name: "{{ homebrew_cask_packages }}"
+    state: present
+  when: 
+    - homebrew_check.stat.exists
+    - homebrew_cask_packages | length > 0
+  tags: homebrew

@@ -6,10 +6,11 @@ Using `ansible-pull` to configure macOS. Unlike the typical Ansible setup where 
 
 ## Prerequisites
 
-You'll need macOS with Ansible and git installed. Install Ansible with:
+You'll need macOS with Ansible and git installed. Install Ansible and required collections:
 
 ```bash
 pip3 install -r requirements.txt
+ansible-galaxy collection install -r collections/requirements.yml
 ```
 
 ## Usage
@@ -34,16 +35,21 @@ ansible-playbook local.yml
 
 ## What's included
 
-The playbook handles Homebrew packages (currently ansible-lint, gh, and git). The base role ensures zsh is the default shell.
+The playbook includes two roles:
+- **base** - Ensures zsh is the default shell
+- **homebrew** - Manages Homebrew packages (currently ansible-lint, gh, and git)
 
-Edit `local.yml` to customize packages for your setup.
+Edit `group_vars/local.yml` to customize packages for your setup.
 
-## Files
+## Project Structure
 
 - `local.yml` - main playbook
 - `hosts` - inventory (localhost only)
-- `ansible.cfg` - configuration
-- `roles/base/` - base system configuration
+- `ansible.cfg` - Ansible configuration
+- `group_vars/local.yml` - variables for local host group
+- `collections/requirements.yml` - Ansible Galaxy collection dependencies
+- `roles/base/` - base system configuration (shell setup)
+- `roles/homebrew/` - Homebrew package management
 
 ## Using tags
 
@@ -51,5 +57,5 @@ Run specific parts:
 
 ```bash
 ansible-pull -U <repo-url> local.yml --tags homebrew
-ansible-pull -U <repo-url> local.yml --tags defaults
+ansible-pull -U <repo-url> local.yml --tags shell
 ```

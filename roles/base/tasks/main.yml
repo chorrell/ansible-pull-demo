@@ -8,10 +8,10 @@
       - env
   tags: shell
 
-- name: Ensure zsh is the default shell
+- name: Ensure default shell is set
   user:
     name: "{{ ansible_facts['env']['USER'] }}"
-    shell: /bin/zsh
+    shell: "{{ default_shell }}"
   become: true
   tags: shell
 

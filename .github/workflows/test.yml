@@ -24,6 +24,9 @@ jobs:
       - name: Install Ansible
         run: pip3 install -r requirements.txt
       
+      - name: Install Ansible Galaxy collections
+        run: ansible-galaxy collection install -r collections/requirements.yml
+      
       - name: Run ansible-playbook syntax check
         run: ansible-playbook local.yml --syntax-check
       
