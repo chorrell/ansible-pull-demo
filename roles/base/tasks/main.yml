@@ -1,16 +1,8 @@
 ---
 # Base configuration tasks for macOS
-- name: Gather minimal facts
-  setup:
-    gather_subset:
-      - '!all'
-      - '!min'
-      - env
-  tags: shell
-
 - name: Ensure default shell is set
   user:
-    name: "{{ ansible_facts['env']['USER'] }}"
+    name: "{{ ansible_facts.user_id }}"
     shell: "{{ default_shell }}"
   become: true
   tags: shell
