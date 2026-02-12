@@ -1,5 +1,7 @@
 # ansible-pull for macOS
 
+[![Test Ansible Playbook](https://github.com/chorrell/ansible-pull-demo/actions/workflows/test.yml/badge.svg)](https://github.com/chorrell/ansible-pull-demo/actions/workflows/test.yml)
+
 Using `ansible-pull` to configure macOS. Unlike the typical Ansible setup where you push changes from a control node, ansible-pull inverts this - each machine pulls its configuration from a git repo and applies it locally.
 
 ## Prerequisites
