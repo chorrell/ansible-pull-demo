@@ -1,0 +1,31 @@
+---
+name: Test Ansible Playbook
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+          cache: 'pip'
+      
+      - name: Install Ansible
+        run: pip3 install -r requirements.txt
+      
+      - name: Run ansible-playbook syntax check
+        run: ansible-playbook local.yml --syntax-check
+      
+      - name: Run ansible-playbook in check mode
+        run: ansible-playbook local.yml --check

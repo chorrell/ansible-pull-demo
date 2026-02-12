@@ -4,12 +4,14 @@
 - hosts: local
   connection: local
   become: false
+  gather_facts: false
   
   vars:
     homebrew_packages:
       - ansible-lint
       - gh
       - git
+    homebrew_cask_packages: []
   
   tasks:
     - name: Ensure Homebrew is installed
@@ -34,7 +36,9 @@
       community.general.homebrew_cask:
         name: "{{ homebrew_cask_packages }}"
         state: present
-      when: homebrew_check.stat.exists
+      when: 
+        - homebrew_check.stat.exists
+        - homebrew_cask_packages | length > 0
       tags: homebrew
   
   roles:
