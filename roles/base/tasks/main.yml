@@ -13,4 +13,3 @@
   become: true
   when: base_default_shell not in base_current_shell.stdout
   tags: shell
-
