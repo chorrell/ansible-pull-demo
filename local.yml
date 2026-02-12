@@ -3,11 +3,10 @@
 # Run with: ansible-pull -U <repo-url> local.yml
 #
 # Variables are defined in group_vars/local.yml
-# Facts gathering is disabled globally for performance - roles gather facts as needed
 - hosts: local
   connection: local
   become: false
-  gather_facts: false
+  gather_facts: true
   
   roles:
     - base
