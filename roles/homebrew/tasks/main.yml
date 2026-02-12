@@ -1,18 +1,19 @@
 ---
 # Homebrew package management tasks
 - name: Ensure Homebrew is installed
-  stat:
+  ansible.builtin.stat:
     path: "{{ homebrew_binary_path }}"
   register: homebrew_check
+  changed_when: false
   tags: homebrew
 
 - name: Display Homebrew status
-  debug:
+  ansible.builtin.debug:
     msg: "Homebrew is {{ 'installed' if homebrew_check.stat.exists else 'not installed' }}"
   tags: homebrew
 
 - name: Fail if Homebrew is not installed
-  fail:
+  ansible.builtin.fail:
     msg: |
       Homebrew is not installed. Please install it first:
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -23,7 +24,7 @@
   community.general.homebrew:
     name: "{{ homebrew_packages }}"
     state: present
-  when: 
+  when:
     - homebrew_check.stat.exists
     - homebrew_packages | length > 0
   tags: homebrew
@@ -32,7 +33,7 @@
   community.general.homebrew_cask:
     name: "{{ homebrew_cask_packages }}"
     state: present
-  when: 
+  when:
     - homebrew_check.stat.exists
     - homebrew_cask_packages | length > 0
   tags: homebrew

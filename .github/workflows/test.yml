@@ -6,29 +6,28 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-
 jobs:
   test:
     runs-on: macos-latest
-    
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
-      
+        uses: actions/checkout@v6
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.14'
-          cache: 'pip'
-      
+          python-version: "3.14"
+          cache: "pip"
+
       - name: Install Ansible
         run: pip3 install -r requirements.txt
-      
+
       - name: Install Ansible Galaxy collections
         run: ansible-galaxy collection install -r collections/requirements.yml
-      
+
       - name: Run ansible-playbook syntax check
         run: ansible-playbook local.yml --syntax-check
-      
+
       - name: Run ansible-playbook in check mode
         run: ansible-playbook local.yml --check
