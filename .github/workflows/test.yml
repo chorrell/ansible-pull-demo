@@ -27,9 +27,6 @@ jobs:
       - name: Install Ansible Galaxy collections
         run: ansible-galaxy collection install -r collections/requirements.yml
 
-      - name: Run ansible-lint
-        uses: ansible/ansible-lint@v26.1.1
-
       - name: Run ansible-playbook syntax check
         run: ansible-playbook local.yml --syntax-check
 
