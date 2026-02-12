@@ -26,9 +26,12 @@ jobs:
       
       - name: Install Ansible Galaxy collections
         run: ansible-galaxy collection install -r collections/requirements.yml
-      
+
+      - name: Run ansible-lint
+        run: ansible-lint
+
       - name: Run ansible-playbook syntax check
         run: ansible-playbook local.yml --syntax-check
-      
+
       - name: Run ansible-playbook in check mode
         run: ansible-playbook local.yml --check

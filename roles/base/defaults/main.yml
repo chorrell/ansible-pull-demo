@@ -1,3 +1,3 @@
 ---
 # Default variables for base role
-default_shell: /bin/zsh
+base_default_shell: /bin/zsh

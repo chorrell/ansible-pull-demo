@@ -2,15 +2,15 @@
 # Base configuration tasks for macOS
 - name: Get current user shell
   ansible.builtin.command: dscl . -read /Users/{{ ansible_facts.user_id }} UserShell
-  register: current_shell
+  register: base_current_shell
   changed_when: false
   tags: shell
 
 - name: Set default shell
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_facts.user_id }}"
-    shell: "{{ default_shell }}"
+    shell: "{{ base_default_shell }}"
   become: true
-  when: default_shell not in current_shell.stdout
+  when: base_default_shell not in base_current_shell.stdout
   tags: shell
 

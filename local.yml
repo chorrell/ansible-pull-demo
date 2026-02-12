@@ -1,13 +1,10 @@
 ---
-# Ansible playbook for configuring macOS with ansible-pull
-# Run with: ansible-pull -U <repo-url> local.yml
-#
-# Variables are defined in group_vars/local.yml
-- hosts: local
+- name: Configure macOS with ansible-pull
+  hosts: local
   connection: local
   become: false
   gather_facts: true
-  
+
   roles:
     - base
     - homebrew

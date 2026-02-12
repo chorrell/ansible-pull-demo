@@ -12,7 +12,7 @@ Base system configuration for macOS.
 Available variables with their default values (see `defaults/main.yml`):
 
 ```yaml
-default_shell: /bin/zsh
+base_default_shell: /bin/zsh
 ```
 
 ## Dependencies
