@@ -47,6 +47,8 @@ CI/CD runs syntax check and check mode on every PR.
   privileged operations
 • macOS-specific: Use `dscl` commands for Directory Services queries,
   not Linux `getent`
+• All Ansible code must pass ansible-lint checks (no trailing spaces,
+  proper YAML formatting, use FQCN for modules)
 
 ### Role Structure
 
@@ -82,6 +84,7 @@ CI/CD runs syntax check and check mode on every PR.
 
 • Syntax check passes (`ansible-playbook local.yml --syntax-check`)
 • Check mode succeeds (`ansible-playbook local.yml --check`)
+• ansible-lint passes (all Ansible code must pass linting)
 • CI tests pass (GitHub Actions)
 • All Markdown files pass markdownlint
 • Changes confined to relevant files
