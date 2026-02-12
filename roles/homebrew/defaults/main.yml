@@ -1,0 +1,6 @@
+---
+# Default variables for homebrew role
+homebrew_binary_path: /opt/homebrew/bin/brew
+homebrew_required: false
+homebrew_packages: []
+homebrew_cask_packages: []

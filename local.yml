@@ -1,45 +1,14 @@
 ---
 # Ansible playbook for configuring macOS with ansible-pull
 # Run with: ansible-pull -U <repo-url> local.yml
+#
+# Variables are defined in group_vars/local.yml
+# Facts gathering is disabled globally for performance - roles gather facts as needed
 - hosts: local
   connection: local
   become: false
   gather_facts: false
   
-  vars:
-    homebrew_packages:
-      - ansible-lint
-      - gh
-      - git
-    homebrew_cask_packages: []
-  
-  tasks:
-    - name: Ensure Homebrew is installed
-      stat:
-        path: /opt/homebrew/bin/brew
-      register: homebrew_check
-      tags: homebrew
-    
-    - name: Display Homebrew status
-      debug:
-        msg: "Homebrew is {{ 'installed' if homebrew_check.stat.exists else 'not installed' }}"
-      tags: homebrew
-    
-    - name: Install Homebrew packages
-      community.general.homebrew:
-        name: "{{ homebrew_packages }}"
-        state: present
-      when: homebrew_check.stat.exists
-      tags: homebrew
-    
-    - name: Install Homebrew cask applications
-      community.general.homebrew_cask:
-        name: "{{ homebrew_cask_packages }}"
-        state: present
-      when: 
-        - homebrew_check.stat.exists
-        - homebrew_cask_packages | length > 0
-      tags: homebrew
-  
   roles:
     - base
+    - homebrew

@@ -1,0 +1,8 @@
+---
+# Variables for local host group
+homebrew_packages:
+  - ansible-lint
+  - gh
+  - git
+
+homebrew_cask_packages: []
