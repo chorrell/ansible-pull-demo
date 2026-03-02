@@ -20,7 +20,7 @@ jobs:
           cache: "pip"
 
       - name: Install yamllint
-        run: pip3 install yamllint==1.38.0
+        run: pip install -r requirements.txt
 
       - name: Run yamllint
         run: yamllint -c .yamllint .
