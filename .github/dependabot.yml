@@ -8,6 +8,11 @@ updates:
       day: "monday"
       time: "10:00"
       timezone: "America/Toronto"
+    groups:
+      ansible-group:
+        patterns:
+          - "ansible"
+          - "ansible-core"
     pull-request-branch-name:
       separator: "/"
     commit-message:
