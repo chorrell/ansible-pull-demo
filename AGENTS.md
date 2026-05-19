@@ -5,12 +5,12 @@ Manages system settings and Homebrew packages.
 
 ## Core Commands
 
-• Install dependencies: `pip3 install -r requirements.txt &&
-  ansible-galaxy collection install -r collections/requirements.yml`
-• Syntax check: `ansible-playbook local.yml --syntax-check`
-• Test run (dry-run): `ansible-playbook local.yml --check`
-• YAML formatting check: `yamllint -c .yamllint .`
-• Run with ansible-pull: `ansible-pull -U <repo-url> local.yml`
+• Install dependencies: `uv sync && uv run ansible-galaxy collection install -r collections/requirements.yml`
+• Syntax check: `uv run ansible-playbook local.yml --syntax-check`
+• Test run (dry-run): `uv run ansible-playbook local.yml --check`
+• YAML formatting check: `uv run yamllint -c .yamllint .`
+• Ansible linting: `uv run ansible-lint`
+• Run with ansible-pull: `ansible-pull -U <repo-url> local.yml` (requires `uv tool install --with-executables-from ansible-core ansible`)
 
 **DO NOT** run `ansible-playbook local.yml` directly - this modifies your
 system. Use `--syntax-check` and `--check` modes only for development.

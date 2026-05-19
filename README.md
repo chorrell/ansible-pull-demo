@@ -6,31 +6,38 @@ Using `ansible-pull` to configure macOS. Unlike the typical Ansible setup where 
 
 ## Prerequisites
 
-You'll need macOS with Ansible and git installed. Install Ansible and required collections:
+You'll need macOS with git installed. Install dependencies using uv:
 
 ```bash
-pip3 install -r requirements.txt
-ansible-galaxy collection install -r collections/requirements.yml
+# Install uv (one-time)
+brew install uv
+
+# Install Ansible and dependencies
+uv sync
+
+# Install Galaxy collections
+uv run ansible-galaxy collection install -r collections/requirements.yml
 ```
 
 ## Usage
 
-Run ansible-pull to apply the configuration:
-
-```bash
-ansible-pull -U https://github.com/YOUR_USERNAME/ansible-pull-demo.git local.yml
-```
-
-For automated runs (only applies if the repo has changed):
-
-```bash
-ansible-pull -U https://github.com/YOUR_USERNAME/ansible-pull-demo.git local.yml -o
-```
-
 Test locally without pulling from git:
 
 ```bash
-ansible-playbook local.yml
+uv run ansible-playbook local.yml
+```
+
+For automated runs with `ansible-pull`, install Ansible globally using uv tools:
+
+```bash
+uv tool install --with-executables-from ansible-core ansible
+ansible-pull -U https://github.com/YOUR_USERNAME/ansible-pull-demo.git local.yml
+```
+
+For automated runs that only apply if the repo has changed:
+
+```bash
+ansible-pull -U https://github.com/YOUR_USERNAME/ansible-pull-demo.git local.yml -o
 ```
 
 ## What's included
