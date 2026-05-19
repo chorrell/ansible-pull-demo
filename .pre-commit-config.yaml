@@ -9,3 +9,8 @@ repos:
     rev: v26.4.0
     hooks:
       - id: ansible-lint
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli2-docker
+    rev: v0.22.1
+    hooks:
+      - id: markdownlint-cli2-docker
