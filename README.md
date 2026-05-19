@@ -43,6 +43,7 @@ ansible-pull -U https://github.com/YOUR_USERNAME/ansible-pull-demo.git local.yml
 ## What's included
 
 The playbook includes two roles:
+
 - **base** - Ensures zsh is the default shell
 - **homebrew** - Manages Homebrew packages (currently ansible-lint, gh, and git)
 
