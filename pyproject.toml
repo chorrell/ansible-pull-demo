@@ -1,0 +1,14 @@
+[project]
+name = "ansible-pull-demo"
+version = "0.1.0"
+description = "Ansible playbook for macOS configuration using ansible-pull"
+requires-python = ">=3.14"
+dependencies = [
+    "ansible>=13",
+]
+
+[dependency-groups]
+dev = [
+    "ansible-lint",
+    "yamllint",
+]
