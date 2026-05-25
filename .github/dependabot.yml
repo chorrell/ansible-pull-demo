@@ -8,6 +8,8 @@ updates:
       day: "monday"
       time: "10:00"
       timezone: "America/Toronto"
+    cooldown:
+      default-days: 7
     groups:
       python-deps:
         patterns:
@@ -25,6 +27,8 @@ updates:
       day: "monday"
       time: "10:00"
       timezone: "America/Toronto"
+    cooldown:
+      default-days: 7
     pull-request-branch-name:
       separator: "/"
     commit-message:
