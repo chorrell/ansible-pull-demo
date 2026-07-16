@@ -107,7 +107,7 @@ conditional execution to minimize unnecessary privilege escalation.
 • `community.general` collection (version ≥9.0.0) for Homebrew modules
 • Homebrew must be pre-installed at `/opt/homebrew/bin/brew`
   (Apple Silicon) or `/usr/local/bin/brew` (Intel)
-• Python 3.14+ with Ansible ≥13.0
+• Python 3.14+ with Ansible ≥14.1.0
 
 ## Gotchas
 
