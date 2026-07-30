@@ -4,7 +4,11 @@ updates:
   - package-ecosystem: "pre-commit"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    groups:
+      monthly-batch:
+        patterns:
+          - "*"
     pull-request-branch-name:
       separator: "/"
     commit-message:
@@ -16,8 +20,7 @@ updates:
   - package-ecosystem: "uv"
     directory: "/"
     schedule:
-      interval: "daily"
-      timezone: "America/Toronto"
+      interval: "monthly"
     cooldown:
       default-days: 7
     groups:
@@ -33,8 +36,11 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
-      timezone: "America/Toronto"
+      interval: "monthly"
+    groups:
+      monthly-batch:
+        patterns:
+          - "*"
     cooldown:
       default-days: 7
     pull-request-branch-name:
