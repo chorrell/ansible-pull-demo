@@ -1,6 +1,7 @@
 # Ansible
 ansible.log
 *.retry
+.ansible/
 
 # Python
 __pycache__/
