@@ -30,10 +30,16 @@ repos:
     hooks:
       - id: yamllint
 
-  - repo: https://github.com/ansible/ansible-lint
-    rev: v26.9.0
+  # Run ansible-lint from the project venv so it uses the collections
+  # bundled with the locked ansible package instead of installing its own.
+  - repo: local
     hooks:
       - id: ansible-lint
+        name: ansible-lint
+        entry: uv run ansible-lint -v --force-color
+        language: unsupported
+        pass_filenames: false
+        always_run: true
 
   - repo: https://github.com/woodruffw/zizmor-pre-commit
     rev: v1.30.1
