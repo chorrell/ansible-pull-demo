@@ -12,3 +12,4 @@ rules:
   document-start: disable
   truthy:
     level: warning
+    check-keys: false
